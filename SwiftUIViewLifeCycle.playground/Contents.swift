@@ -108,64 +108,9 @@ struct AdvancedLifecycleView: View {
     @State private var age = 0
     @State private var showDetails = false
     
+    // Step 1: Creation
     init() {
-        print("🎯 ADVANCED INIT: Advanced view created")
-    }
-    
-    var body: some View {
-        print("🔄 ADVANCED BODY: Advanced view updating")
-        
-        return ScrollView {
-            VStack(spacing: 20) {
-                Text("Advanced Lifecycle Example")
-                    .font(.title2)
-                    .padding()
-                
-                Group {
-                    TextField("Enter your name", text: $name)
-                        .textFieldStyle(.roundedBorder)
-                    
-                    Stepper("Age: \(age)", value: $age, in: 0...100)
-                    
-                    Button("Show Details") {
-                        showDetails.toggle()
-                    }
-                    .buttonStyle(.bordered)
-                }
-                .padding(.horizontal)
-                
-                if showDetails {
-                    PersonDetailsView(name: name, age: age)
-                        .transition(.slide)
-                }
-            }
-        }
-        .animation(.easeInOut, value: showDetails)
-        .onAppear {
-            print("👋 ADVANCED ON APPEAR: Advanced view appeared")
-        }
-        .onDisappear {
-            print("👋 ADVANCED ON DISAPPEAR: Advanced view disappeared")
-        }
-        // This monitors when specific values change
-        .onChange(of: name) { oldValue, newValue in
-            print("📝 NAME CHANGED: From '\(oldValue)' to '\(newValue)'")
-        }
-        .onChange(of: age) { oldValue, newValue in
-            print("🎂 AGE CHANGED: From \(oldValue) to \(newValue)")
-        }
-    }
-}
-
-// MARK: - Example 4: Child View to Show Parent-Child Lifecycle
-struct PersonDetailsView: View {
-    let name: String
-    let age: String
-    
-    init(name: String, age: Int) {
-        self.name = name
-        self.age = "\(age)"
-        print("🎯 DETAILS INIT: PersonDetailsView created for \(name)")
+        print("🎯 View created!")
     }
     
     var body: some View {
